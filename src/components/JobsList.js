@@ -21,7 +21,7 @@ const initialFormState = {
 const addJob = job => {
   const qs = require('qs');
 
-  axios.post('https://cors-anywhere.herokuapp.com/https://comfy-backend-restapi.herokuapp.com/api/v1/jobs.json', qs.stringify(
+  axios.post('https://cors-anywhere.herokuapp.com/https://comfy-backend-restapi.herokuapp.com/api/v1/jobs', qs.stringify(
       {
         job:{
           company: job.company,
@@ -35,7 +35,7 @@ const addJob = job => {
 };
 
 const removeJob = id => {
-    axios.delete( 'https://cors-anywhere.herokuapp.com/https://comfy-backend-restapi.herokuapp.com/api/v1/jobs.json' + id )
+    axios.delete( 'https://cors-anywhere.herokuapp.com/https://comfy-backend-restapi.herokuapp.com/api/v1/jobs/' + id )
         .then(response => {
           setJobs(jobs.filter(job => job.id !== id))
         })
@@ -59,7 +59,7 @@ const editJob = job => {
     setEditing(false);
   
     const qs = require('qs');
-    axios.patch('https://cors-anywhere.herokuapp.com/https://comfy-backend-restapi.herokuapp.com/api/v1/jobs.json' + updatedJob.id, qs.stringify(
+    axios.patch('https://cors-anywhere.herokuapp.com/https://comfy-backend-restapi.herokuapp.com/api/v1/jobs/' + updatedJob.id, qs.stringify(
         {
           job:{
             company: updatedJob.company,
@@ -90,8 +90,8 @@ const editJob = job => {
       </div>
       <br/>
       <hr/>
-      {jobs.map((job, _) => (
-          <Job job={job} removeJob={removeJob} editJob={editJob} editing={editing} />
+      {jobs.map((job, index) => (
+          <Job key={index} job={job} removeJob={removeJob} editJob={editJob} editing={editing} />
         ))}
     </div>
   </div>
