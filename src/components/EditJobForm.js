@@ -14,14 +14,14 @@ const EditJobForm = props => {
         if (!job.company || !job.position || !job.description) return;
         props.updateJob(job)
       }}>
-        <label className='m-2'>Company</label>
+        <label className='m-2'><b>Company</b></label>
         <input className='mb-3'type="text" name="company" value={job.company} onChange={handleInputChange} ></input>
-        <label className='m-2'>Position</label>
+        <label className='m-2'><b>Position</b></label>
         <input className='mb-3' type="text" name="position" value={job.position} onChange={handleInputChange} ></input>
-        <label className='m-2'>Description</label>
+        <label className='m-2'><b>Description</b></label>
         <input className='mb-3' type="text" name="description" value={job.description} onChange={handleInputChange} ></input>
 
-        <button className="btn btn-info m-2">Update Job</button>
+        <button className="btn btn-info m-2"><b>Update Job</b></button>
         <button className="btn btn-warning" onClick={() => props.setEditing(false)}>Cancel</button>
       </form>
   )
